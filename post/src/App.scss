@@ -1,5 +1,9 @@
+@import './lib/Typography/tokens.scss';
+
 .App {
   text-align: center;
+  font-size: $font-size-l;
+  font-family: $font-family-lato;
 }
 
 .App-logo {

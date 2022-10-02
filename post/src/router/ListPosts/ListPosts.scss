@@ -1,0 +1,10 @@
+@import  '../../lib/Typography/Header.scss' ;
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    &-item {
+        border: 1px solid;
+
+    }
+}

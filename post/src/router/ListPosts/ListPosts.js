@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { getAllPosts } from './service/posts.service'
+import { getAllPosts } from './service/posts.service';
+import './ListPosts.scss';
+import OnePost from '../../view/OnePost/OnePost';
+
 function ListPosts() {
   const [listPosts, setListPosts] = useState([])
   const userName = [
@@ -74,28 +77,22 @@ function ListPosts() {
   }
   const post = listPosts.map(item => {
     return (
-      <div key={item.id}>
-        <h2>Temat Posta:
-          <span>{item.title}</span>
-        </h2>
-        <p>Autor: 
-          <span>
-            {item.name}
-          </span>
-        </p>
-        <div>
-          <p>{item.body}</p>
-        </div>
-
-        <button onClick={() => goToEdite(item.id) }>Edytuj zabiera do strony edytowania</button>
-
-      </div>
-    )
+      <OnePost 
+        id={item.id} 
+        body={item.body} 
+        title={item.title} 
+        name={item.name}
+        goToEdite={goToEdite}
+      />
+    ) 
   })
   return (
     <div>
       <h1>Lista Postów</h1>
-      {post}
+      <div className='grid'>
+        {post}
+      </div>
+
     </div>
   )
 }
