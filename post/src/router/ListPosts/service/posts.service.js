@@ -8,11 +8,7 @@ const getAllPosts = () => {
 }
 
 
-const getOnePost = (id) => {
-    return axios.get(`${API}/${id}`)
-}
 
 export {
     getAllPosts,
-    getOnePost
 }

@@ -7,6 +7,7 @@ import ListPosts from './router/ListPosts/ListPosts';
 
 
 function App() {
+
   return (
     <Router>
       <div className="App">
@@ -21,17 +22,12 @@ function App() {
             <span>listPosts</span>
           </Link>
           </li>
-          <li>
-          <Link to='/post'>
-            <span>post</span>
-          </Link>
-          </li>
         </ul>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
         <Switch>
-          <Route exact path='/post' component={EditPost}>
+          <Route exact path='/post/:id' component={EditPost}>
           </Route>
 
           <Route exact path='/listPosts' component={ListPosts}>

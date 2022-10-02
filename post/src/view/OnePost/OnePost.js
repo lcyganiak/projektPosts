@@ -2,7 +2,7 @@ import React from 'react'
 
 function OnePost(props) {
 
-    const goToEdite = (id) => {
+    const goToEditeChildren = (id) => {
         props.goToEdite(id)
     }
   return (
@@ -24,7 +24,7 @@ function OnePost(props) {
       <p>{props.body}</p>
     </div>
 
-    <button onClick={() => goToEdite(props.id)}>Edytuj zabiera do strony edytowania</button>
+    <button onClick={() => goToEditeChildren(props.id, props.userId)}>Edytuj zabiera do strony edytowania</button>
 
   </div>
   )

@@ -1,10 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
+import { useHistory } from "react-router-dom";
 import { getAllPosts } from './service/posts.service';
 import './ListPosts.scss';
 import OnePost from '../../view/OnePost/OnePost';
 
 function ListPosts() {
+  const router = useHistory()
   const [listPosts, setListPosts] = useState([])
+  // listPost tu jest pustą tablicą, mogę zminić za pomocą metody setListPosts
   const userName = [
     {
       name: "Adam Mickiewicz",
@@ -55,13 +59,13 @@ function ListPosts() {
         // then to moment kiedy dostaję pizze
         const data = res.data.map(item => {
           const user = userName.find(name => name.id === item.userId)
-          // console.log(name , item)
           return { ...user, ...item }
-
         })
         console.log(data)
+        // data to odpowiedz z serwera - to do
 
         setListPosts(data)
+        // zminiło to listPost z pustej tablicy na tablice z objekatki z BE, nie kumam jak pobrać el. z backendu !!!!! to do
       })
       .catch(err => {
         // nie dostałem pizzy, składam rekalmację, 
@@ -71,8 +75,11 @@ function ListPosts() {
       // to co robię bez względu na to czy dostałem czy nie dostałem pizzy
 
     )
+
   }, [])
   const goToEdite = (id) => {
+    router.push(`post/${id}`)
+    console.log(router)
     console.log(id)
   }
   const post = listPosts.map(item => {
@@ -82,6 +89,7 @@ function ListPosts() {
         body={item.body} 
         title={item.title} 
         name={item.name}
+        userId={item.userId}
         goToEdite={goToEdite}
       />
     ) 
