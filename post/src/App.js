@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import './App.scss';
+import classes from './App.module.scss'
 import EditPost from './router/EditPost/EditPost';
 import Home from './router/Home/Home';
 import ListPosts from './router/ListPosts/ListPosts';
@@ -10,7 +9,7 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div className={classes.App}>
         <ul>
           <li>
             <Link to='/'>
@@ -24,7 +23,6 @@ function App() {
           </li>
         </ul>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
         </header>
         <Switch>
           <Route exact path='/post/:id' component={EditPost}>

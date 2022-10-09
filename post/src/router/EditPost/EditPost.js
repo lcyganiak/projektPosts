@@ -2,8 +2,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom'
 import { getOnePost } from './service/editPost.service';
 
-function EditPost() {
-  const { id } = useParams()
+function EditPost(props) {
+
+
+const keys = Object.keys(props)
+console.log(keys)
+
+  const { id } = useParams() // alternatywa to const id = useParams().id
   const [post, setPost] = useState({})
   useEffect(() => (async () => {
     const respons = await getOnePost(id)
@@ -22,6 +27,7 @@ function EditPost() {
    console.log(EditedPost)
    setPost({...post, body: body.current.value, title: title.current.value})
   }
+
 
   return (
     <div>
